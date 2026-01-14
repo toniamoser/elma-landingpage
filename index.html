@@ -9,10 +9,165 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
-    <link  href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
-    <h1>Hello world</h1>
-    
+    <section class="hero" aria-label="Hero">
+  <div class="container">
+    <div class="hero__layout">
+      <!-- Content -->
+      <div class="hero__content">
+        <img class="hero__logo" src="assets/Logo_elma.svg" alt="ELMA Immobilien" />
+
+        <div class="hero__bottom">
+          <div class="hero__text">
+            <h1>Zuhause im Glarnerland</h1>
+            <p>Mit Weitblick, Erfahrung und unternehmerischer Verantwortung.</p>
+          </div>
+
+          <div class="hero__actions" role="group" aria-label="Kontakt">
+            <a class="btn btn--primary" href="tel:+41792364415">Jetzt anrufen</a>
+            <a class="btn btn--secondary" href="mailto:info@elma-ag.ch">E-Mail schreiben</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media -->
+      <div class="hero__media">
+        <div class="hero__image-clip">
+          <img
+            class="hero__image"
+            src="assets/Headerbild_freie-Gewerbeflaeche.jpg"
+            alt="Gebäude / Immobilie"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <a class="hero__badge" href="assets/ELMA_Mietflaeche-zsm.pdf" target="_blank" rel="noopener">
+          <span class="hero__badge-inner">
+            <h4>Freie<br />Büro- und<br />Gewerbefläche<br />1276 m²</h4>
+            <p class="body-small">Bezugsbereit ab <br />sofort.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro" aria-label="Kurzvorstellung">
+  <div class="container">
+    <div class="intro__layout">
+      <div class="intro__media">
+        <div class="intro__image-clip">
+          <img
+            class="intro__image"
+            src="assets/Elma_Martin-Reithebuch.jpg"
+            alt="Martin Reithebuch"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <div class="intro__content">
+        <h2>Immobilien sind Vertrauenssache</h2>
+        <p>
+          Mit dem Inhaber Martin Reithebuch haben Sie einen zuverlässigen und regional
+          verankerten Ansprechpartner.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact section" aria-label="Kontakt">
+  <div class="contact__layout">
+    <!-- Content -->
+    <div class="contact__content">
+      <h2>So erreichen </br>sie uns</h2>
+
+      <p class="absatz">
+        ELMA Immobilien AG<br />
+        Martin Reithebuch<br />
+        Zaunweg 15a<br />
+        8754 Netstal
+      </p>
+
+      <p class="absatz">
+        <a class="contact__link" href="tel:+41792364415">T +41 (0)79 236 44 15</a><br />
+        <a class="contact__link" href="mailto:info@elma-ag.ch">info@elma-ag.ch</a>
+      </p>
+
+      <div class="contact__actions">
+        <button class="btn btn--secondary" type="button" data-map-toggle>
+          Anfahrtsskizze
+        </button>
+
+        <a
+          class="btn btn--primary"
+          href="https://www.google.com/maps/dir//47.0706136,9.0567/@47.0705313,9.0572337,228m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener"
+        >
+          Google Routenplaner
+        </a>
+      </div>
+    </div>
+
+    <!-- Media (rechts, mit Bleed) -->
+    <div class="contact__media" aria-label="Karte">
+      <div class="contact__image-clip">
+        <img
+          class="contact__image"
+          src="assets/map/Karte_ELMA.png"
+          alt="Lageplan"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <!-- Overlay Bild (anfangs unsichtbar) -->
+        <img
+          class="contact__image contact__image--overlay"
+          src="assets/map/Karte_ELMA_Weg.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" aria-label="Footer">
+  <div class="footer">
+    <div class="footer__logo">
+      <img src="assets/Logo_elma.svg" alt="ELMA Immobilien" />
+    </div>
+
+    <div class="footer__contact body-small">
+      <strong>Kontakt</strong><br />
+      ELMA Immobilien AG<br />
+      Martin Reithebuch<br />
+      Zaunweg 15a<br />
+      8754 Netstal<br /><br />
+    </div>
+
+    <nav class="footer__legal body-small" aria-label="Rechtliches">
+      <a class="footer__link" href="assets/Datenschutzerklaerung.pdf" target="_blank" rel="noopener">
+        Datenschutz
+      </a>
+      <a class="footer__link" href="assets/Impressum.pdf" target="_blank" rel="noopener">
+        Impressum
+      </a>
+    </nav>
+  </div>
+</footer>
+ 
+<script src="map.js"></script> 
 </body>
 </html>

@@ -1,0 +1,748 @@
+:root {
+  /* Farben */
+  --color-primary: #005687;
+  --color-secondary: #002d46;
+  --color-text: #000000;
+  --color-text-invert: #ffffff;
+
+  /* Font */
+  --font-sans: "Work Sans";
+
+  /* Layout */
+  --container-max: 1200px;
+
+  /* Side Padding */
+--container-pad: clamp(32px, 8vw, 128px);
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-128: 200px;
+
+  /* Radius */
+  --radius-base: 4px;
+  --radius-hover: 12px;
+
+  /* Breakpoint*/
+  --bp-md: 768px;
+}
+
+html {
+  font-size: 100%; /* = 16px */
+}
+
+/* =========================
+   Reset / Base
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: clip; /* besser als hidden (keine Scrollbar, kein Layout-Jump) */
+}
+
+body {
+  font-family: var(--font-sans);
+  margin: 0;
+  color: var(--color-text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* =========================
+   Layout Utilities
+   ========================= */
+
+.section {
+  padding-block: var(--space-64);
+}
+
+/* =========================
+  Typografie
+   ========================= */
+h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 2.6vw, 3.5rem);
+  line-height: clamp(2.8rem, 3vw, 4rem);
+  color: var(--color-primary);
+
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 2.1vw, 2.5rem);
+  line-height: clamp(2.5rem, 2.6vw, 3rem);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  line-height: 1.75rem;
+  color: var(--color-primary);
+}
+
+h4 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.5rem;
+  color: var(--color-primary);
+}
+
+h5 {
+  font-weight: 600;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.5rem;
+  color: var(--color-primary);
+}
+
+p {
+  font-weight: 400;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.75rem;
+  margin-top: 0;
+}
+
+.body-small {
+  font-weight: 400;
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
+  line-height: clamp(1.25rem, 1.4vw, 1.5rem);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+
+  padding: 12px 16px;
+
+  border-radius: var(--radius-base);
+  cursor: pointer;
+
+  transition: border-radius 180ms ease, background-color 180ms ease, color 180ms ease,
+    border-color 180ms ease;
+}
+
+.btn--primary {
+  background: var(--color-secondary);
+  color: var(--color-text-invert);
+  border: 2px solid var(--color-secondary);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+}
+
+.btn--primary:hover,
+.btn--secondary:hover {
+  border-radius: var(--radius-hover);
+}
+
+/* Header/Footer Platzhalter */
+.site-header,
+.site-footer {
+  padding-block: var(--space-16);
+}
+
+
+/* =========================
+   Hero
+   ========================= */
+
+   .hero {
+  /* Desktop/Tablet fullscreen */
+  min-height: 100svh;
+}
+
+.hero .container {
+  min-height: 100svh;
+  padding: 0 10%;
+}
+
+/* Layout: mobile = column, desktop = 2-spaltig */
+.hero__layout {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-56);
+}
+
+/* Content */
+.hero__content {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--space-32);
+}
+
+.hero__logo {
+  width: 10vw; /* kannst du nach Logo anpassen */
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.hero__text {
+    margin-bottom: 0px;
+}
+
+.hero__bottom {
+  margin-top: auto;
+  display: grid;
+  gap: var(--space-24);
+}
+
+/* Buttons */
+.hero__actions {
+  display: flex;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+}
+
+/* Media */
+.hero__media {
+  position: relative;
+
+  /* gleicher Weißrand oben/unten/rechts */
+  --hero-gap: clamp(16px, 2vw, 48px);
+
+
+    --outside: max(0px, calc((100vw - var(--container-max)) / 2));
+
+  --bleed: max(0px, calc(var(--container-pad) - var(--hero-gap)));
+
+  /* Höhe wie Viewport */
+  min-height: 100svh;
+  /* gleiche Innenabstände oben/unten wie rechts */
+  padding-block: var(--hero-gap);
+
+  /* Layout */
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+}
+
+.hero__image-clip {
+  height: 100%;
+  border-radius: var(--radius-base);
+  overflow: hidden;
+
+  width: calc(100% + var(--bleed));
+  margin-right: calc(var(--bleed) * -1);
+
+  /* linke Kante diagonal (Trapez), wie in deinen Mockups */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 25% 100%);
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Badge / Störer */
+.hero__badge {
+  position: absolute;
+  right: 2vw;
+  bottom: -2vw;
+  transform: rotate(8deg);
+
+  width: clamp(180px, 18vw, 240px);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+
+  /* Zentrierung */
+  display: grid;
+  place-items: center;
+
+  text-decoration: none;
+  color: var(--color-text-invert);
+}
+
+/* Kreis als eigenes Layer (skaliert), Text bleibt stabil */
+.hero__badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--color-primary);
+  transform: scale(1);
+  transition: transform 180ms ease;
+  will-change: transform;
+}
+
+.hero__badge:hover::before {
+  transform: scale(1.04);
+}
+
+/* Text liegt drüber, bleibt unskaliert */
+.hero__badge-inner {
+  position: relative;
+  z-index: 1;
+
+  /* echter Innenabstand */
+  padding: var(--space-16);
+
+  /* horizontal + vertikal mittig */
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: var(--space-8);
+}
+
+.hero__badge-inner h4 {
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-text-invert);
+  margin: 0;
+}
+
+.hero__badge-inner p {
+  margin: 0;
+}
+
+/* Desktop/Tablet: 2 Spalten */
+@media (min-width: 768px) {
+  .hero__layout {
+    grid-template-columns: 1fr 2fr;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+/* Mobile Verhalten */
+@media (max-width: 767.98px) {
+  /* Mobile: feste Reihenfolge über Grid Areas */
+  .hero .container {
+  padding-top: var(--space-40);
+}
+  
+  .hero__layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "media"
+      "text"
+      "actions";
+    gap: var(--space-24);
+  }
+
+  /* wir "flatten" content + bottom, damit logo/text/actions echte Grid-Items werden */
+  .hero__content {
+    display: contents;
+  }
+
+  .hero__bottom {
+    display: contents;
+  }
+
+  .hero__logo {
+    grid-area: logo;
+    justify-self: center; /* Logo mittig */
+    margin-bottom: var(--space-48);     /* optional: sonst evtl. doppelte Abstände */
+    width: 100px;         /* statt 10vw, damit es mobile stabil bleibt */
+  }
+
+  .hero__media {
+    grid-area: media;
+
+    min-height: auto;
+    height: clamp(260px, 55vw, 360px);
+    padding-block: 0;
+    padding-right: 0;
+  }
+
+  .hero__image-clip {
+    width: 100%;
+    height: 100%;
+    margin-right: 0;
+  }
+
+  .hero__text {
+    grid-area: text;
+    margin-bottom: 0;
+    margin-top: var(--space-64);
+  }
+
+  .hero__actions {
+    grid-area: actions;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-16);
+  }
+
+  .btn {
+    width: auto;
+  }
+
+  /* Badge Position auf Mobile */
+  .hero__badge {
+    left: 6%;
+    right: auto;
+    bottom: -48px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero__media {
+    --mobile-bleed: clamp(16px, 12vw, 82px);
+  }
+
+  .hero__image-clip {
+    width: calc(100% + var(--mobile-bleed));
+    margin-right: calc(var(--mobile-bleed) * -1);
+  }
+}
+
+
+/* =========================
+   Kurzvorstellung (Intro)
+   ========================= */
+
+.intro {
+  padding-block: var(--space-128);
+  padding-right: var(--container-pad);
+}
+
+.intro__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-32);
+  align-items: center;
+}
+
+/* Desktop/Tablet: Bild links, Text rechts */
+@media (min-width: 768px) {
+  .intro__layout {
+    grid-template-columns: 1.35fr 1fr;
+    gap: var(--space-48);
+    align-items: center;
+  }
+}
+
+/* Media */
+.intro__media {
+  position: relative;
+
+  /* Außenfläche links vom Container (bei sehr großen Screens > 1200px) */
+  --outside: max(0px, calc((100vw - var(--container-max)) / 2));
+
+  --bleed: max(0px, calc(var(--outside) + var(--container-pad)));
+
+  display: flex;
+  align-items: stretch;
+}
+
+/* Bild-Clip: läuft nach links raus */
+.intro__image-clip {
+  border-radius: var(--radius-base);
+  overflow: hidden;
+
+  /* nach links „rausziehen“ */
+  width: calc(100% + var(--bleed));
+  margin-left: calc(var(--bleed) * -1);
+
+  /* Schräge auf der ANDEREN Seite = rechte Kante schräg
+     (unten rechts eingerückt) */
+  clip-path: polygon(0% 0%, 88% 0%, 100% 100%, 0% 100%);
+}
+
+.intro__image {
+  width: 100%;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Content */
+.intro__content {
+  display: grid;
+  gap: var(--space-16);
+}
+
+/* Mobile: Bild oben, Text unten (kommt sowieso durch 1-col grid) */
+@media (max-width: 767.98px) {
+  .intro {
+    padding-block: var(--space-128);
+    padding-bottom: var(--space-24);
+  } 
+
+  .intro__content {
+    padding: 0 var(--container-pad);
+  }
+
+  .intro__media {
+    padding-block: 0;
+    margin-right: var(--container-pad);
+  }
+}
+
+
+/* =========================
+   Kontakt
+   ========================= */
+
+.contact {
+  padding-block: var(--space-64);
+}
+
+/* Layout: 1 col mobile, 2 col ab md */
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-48);
+  align-items: center;
+}
+
+/* Desktop: Content links, Bild rechts */
+@media (min-width: 768px) {
+  .contact__layout {
+    grid-template-columns: 1fr 1.3fr;
+    gap: 0;
+    align-items: stretch;
+  }
+}
+
+/* Content */
+.contact__content {
+  padding-inline: var(--container-pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.contact__content h2 {
+  margin-bottom: var(--space-4);
+}
+
+/* Links (Tel/Mail) */
+.contact__link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+text-decoration-color:var(--color-primary);
+}
+
+/* Buttons */
+.contact__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-top: var(--space-40);
+  align-items: flex-start; /* Buttons NICHT full width */
+}
+
+/* Media */
+.contact__media {
+  position: relative;
+
+  /* gleicher "Rand" wie Hero, damit es konsistent wirkt */
+  --contact-gap: clamp(16px, 2vw, 48px);
+
+  /* Bleed nach rechts: gleiche Logik wie Hero */
+  --bleed: max(0px, calc(var(--container-pad) - var(--contact-gap)));
+
+  padding-block: var(--contact-gap);
+  display: flex;
+  align-items: stretch;
+}
+
+/* Clip + Bleed nach rechts */
+.contact__image-clip {
+  position: relative;
+
+  border-radius: var(--radius-base);
+  overflow: hidden;
+
+  height: 100%;
+  min-height: clamp(320px, 35vw, 520px);
+
+  width: calc(100% + var(--bleed));
+  margin-right: calc(var(--bleed) * -1);
+
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 15% 100%);
+}
+
+.contact__image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.absatz {
+  margin: 0;
+  margin-top: var(--space-16);
+}
+
+/* Overlay: startet unsichtbar, blendet ein */
+.contact__image--overlay {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+/* State: Overlay sichtbar */
+.contact__image-clip.is-overlay-visible .contact__image--overlay {
+  opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 767.98px) {
+  .contact {
+    padding-block: var(--space-64);
+  }
+
+  .contact__layout {
+    gap: var(--space-32);
+  }
+
+  .contact__media {
+    margin-top: var(--space-24);
+    padding-block: 0;
+    padding-left: var(--container-pad);
+  }
+
+  .contact__image-clip {
+    width: 100%;
+    margin-right: 0;
+    min-height: clamp(260px, 65vw, 420px);
+  }
+}
+
+/* =========================
+   Footer
+   ========================= */
+
+.site-footer {
+  padding-block: var(--space-48);
+}
+
+/* Außenlayout */
+.footer {
+  padding-inline: var(--container-pad);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-48);
+
+  flex-wrap: wrap; /* wichtig: erlaubt Umbruch */
+}
+
+/* Logo */
+.footer__logo img {
+  width: 100px;
+  height: auto;
+  display: block;
+}
+
+/* Kontaktblock: darf wachsen */
+.footer__contact {
+  flex: 1 1 150px; /* ab hier wird’s eng -> wrap */
+  margin: 0;
+  padding: 0;
+}
+
+/* Legal Links: soll nach unten fallen, wenn Platz fehlt */
+.footer__legal {
+  flex: 0 1 220px;
+  display: grid;
+  gap: var(--space-8);
+  text-align: right;
+  margin-left: auto; /* schiebt rechts */
+}
+
+/* Links (Tel/Mail + PDFs) */
+.footer__link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-primary);
+}
+
+/* Wenn umgebrochen wird, sollen die Legal Links unten links/rechts sauber wirken */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;        /* alle Spalten mittig */
+    justify-content: flex-start;/* space-between deaktivieren */
+    text-align: center;         /* Text im Footer generell zentrieren */
+    gap: var(--space-24);
+  }
+
+  .footer__contact {
+    flex: none;
+  }
+
+  .footer__legal {
+    width: 100%;
+    margin-left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding-top: var(--space-24);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}
