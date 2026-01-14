@@ -524,13 +524,13 @@ p {
     padding-bottom: var(--space-24);
   } 
 
-  .intro__content {
-    padding: 0 var(--container-pad);
+  .intro__media {
+    padding-right: var(--container-pad);   /* statt margin-right */
   }
 
-  .intro__media {
-    padding-block: 0;
-    margin-right: var(--container-pad);
+   .intro__image-clip {
+    width: 100%;
+    margin-left: 0;
   }
 }
 
