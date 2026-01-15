@@ -6,6 +6,7 @@
   --color-text-invert: #ffffff;
 
   /* Font */
+
   --font-sans: "Work Sans";
 
   /* Layout */
@@ -15,18 +16,14 @@
 --container-pad: clamp(32px, 8vw, 128px);
 
   /* Spacing */
-  --space-4: 4px;
-  --space-8: 8px;
-  --space-12: 12px;
-  --space-16: 16px;
-  --space-20: 20px;
-  --space-24: 24px;
-  --space-32: 32px;
-  --space-40: 40px;
-  --space-48: 48px;
-  --space-56: 56px;
-  --space-64: 64px;
-  --space-128: 200px;
+  --space-2xs: clamp(2px, 0.2vw, 4px);
+  --space-xs: clamp(4px, 0.4vw, 8px);
+  --space-sm: clamp(8px, 0.8vw, 16px);
+  --space-md: clamp(16px, 1.2vw, 24px);
+  --space-lg: clamp(24px, 2vw, 40px);
+  --space-xl: clamp(40px, 3vw, 72px);
+  --space-2xl: clamp(64px, 4vw, 120px);
+  --space-3xl: clamp(96px, 15vw, 244px);
 
   /* Radius */
   --radius-base: 4px;
@@ -53,6 +50,14 @@ html,
 body {
   height: 100%;
   overflow-x: clip; /* besser als hidden (keine Scrollbar, kein Layout-Jump) */
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none !important;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -95,7 +100,7 @@ a {
    ========================= */
 
 .section {
-  padding-block: var(--space-64);
+  padding-block: var(--space-xl);
 }
 
 /* =========================
@@ -117,7 +122,7 @@ h2 {
   font-size: clamp(2rem, 2.1vw, 2.5rem);
   line-height: clamp(2.5rem, 2.6vw, 3rem);
   color: var(--color-primary);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2xs);
 }
 
 h3 {
@@ -146,7 +151,7 @@ h5 {
 p {
   font-weight: 400;
   font-size: clamp(1rem, 1.4vw, 1.25rem);
-  line-height: 1.75rem;
+  line-height: 150%;
   margin-top: 0;
 }
 
@@ -196,7 +201,7 @@ p {
 /* Header/Footer Platzhalter */
 .site-header,
 .site-footer {
-  padding-block: var(--space-16);
+  padding-block: var(--space-sm);
 }
 
 
@@ -206,32 +211,29 @@ p {
 
    .hero {
   /* Desktop/Tablet fullscreen */
-  min-height: 100svh;
+  min-height: 80svh;
 }
 
 .hero .container {
-  min-height: 100svh;
   padding: 0 10%;
 }
 
 /* Layout: mobile = column, desktop = 2-spaltig */
 .hero__layout {
-  min-height: 100svh;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-56);
+  gap: var(--space-lg);
 }
 
 /* Content */
 .hero__content {
-  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding-block: var(--space-32);
+  padding-block: var(--space-xl);
 }
 
 .hero__logo {
-  width: 10vw; /* kannst du nach Logo anpassen */
+  width: clamp(96px, 8vw, 164px);
   height: auto;
   margin-bottom: 40px;
 }
@@ -243,13 +245,13 @@ p {
 .hero__bottom {
   margin-top: auto;
   display: grid;
-  gap: var(--space-24);
+  gap: var(--space-md);
 }
 
 /* Buttons */
 .hero__actions {
   display: flex;
-  gap: var(--space-16);
+  gap: var(--space-sm);
   flex-wrap: wrap;
 }
 
@@ -337,13 +339,13 @@ p {
   z-index: 1;
 
   /* echter Innenabstand */
-  padding: var(--space-16);
+  padding: var(--space-sm);
 
   /* horizontal + vertikal mittig */
   display: grid;
   place-items: center;
   text-align: center;
-  gap: var(--space-8);
+  gap: var(--space-xs);
 }
 
 .hero__badge-inner h4 {
@@ -370,7 +372,7 @@ p {
 @media (max-width: 767.98px) {
   /* Mobile: feste Reihenfolge über Grid Areas */
   .hero .container {
-  padding-top: var(--space-40);
+  padding-top: var(--space-lg);
 }
   
   .hero__layout {
@@ -380,7 +382,7 @@ p {
       "media"
       "text"
       "actions";
-    gap: var(--space-24);
+    gap: var(--space-md);
   }
 
   /* wir "flatten" content + bottom, damit logo/text/actions echte Grid-Items werden */
@@ -395,7 +397,7 @@ p {
   .hero__logo {
     grid-area: logo;
     justify-self: center; /* Logo mittig */
-    margin-bottom: var(--space-48);     /* optional: sonst evtl. doppelte Abstände */
+    margin-bottom: var(--space-lg);     /* optional: sonst evtl. doppelte Abstände */
     width: 100px;         /* statt 10vw, damit es mobile stabil bleibt */
   }
 
@@ -417,7 +419,7 @@ p {
   .hero__text {
     grid-area: text;
     margin-bottom: 0;
-    margin-top: var(--space-64);
+    margin-top: var(--space-xl);
   }
 
   .hero__actions {
@@ -425,7 +427,7 @@ p {
 
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-16);
+    gap: var(--space-sm);
   }
 
   .btn {
@@ -457,14 +459,17 @@ p {
    ========================= */
 
 .intro {
-  padding-block: var(--space-128);
+  padding-block: var(--space-3xl);
+}
+
+.container__intro {
   padding-right: var(--container-pad);
 }
 
 .intro__layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-32);
+  gap: var(--space-md);
   align-items: center;
 }
 
@@ -472,60 +477,72 @@ p {
 @media (min-width: 768px) {
   .intro__layout {
     grid-template-columns: 1.35fr 1fr;
-    gap: var(--space-48);
+    gap: var(--space-lg);
     align-items: center;
   }
+}
+
+.intro__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
 }
 
 /* Media */
 .intro__media {
   position: relative;
 
-  /* Außenfläche links vom Container (bei sehr großen Screens > 1200px) */
-  --outside: max(0px, calc((100vw - var(--container-max)) / 2));
+  --contact-gap: clamp(16px, 2vw, 48px);
 
-  --bleed: max(0px, calc(var(--outside) + var(--container-pad)));
+  --bleed: max(0px, calc(var(--container-pad) + var(--contact-gap)));
 
+  padding-block: var(--contact-gap);
   display: flex;
   align-items: stretch;
 }
 
 /* Bild-Clip: läuft nach links raus */
 .intro__image-clip {
+  position: relative;
+
   border-radius: var(--radius-base);
   overflow: hidden;
 
-  /* nach links „rausziehen“ */
+  height: 100%;
+
   width: calc(100% + var(--bleed));
   margin-left: calc(var(--bleed) * -1);
 
   /* Schräge auf der ANDEREN Seite = rechte Kante schräg
      (unten rechts eingerückt) */
   clip-path: polygon(0% 0%, 88% 0%, 100% 100%, 0% 100%);
+
+  aspect-ratio: 3 / 1;
+  min-height: clamp(260px, 22vw, 420px);
 }
 
 .intro__image {
+  position: absolute;
+  inset: 0;
+
   width: 100%;
-  height: 300px;
+  height: 100%;
   display: block;
   object-fit: cover;
 }
 
-/* Content */
-.intro__content {
-  display: grid;
-  gap: var(--space-16);
-}
 
 /* Mobile: Bild oben, Text unten (kommt sowieso durch 1-col grid) */
 @media (max-width: 767.98px) {
   .intro {
-    padding-block: var(--space-128);
-    padding-bottom: var(--space-24);
+    padding-block: var(--space-2xl);
+    padding-bottom: var(--space-md);
   } 
 
   .intro__media {
-    padding-right: var(--container-pad);   /* statt margin-right */
+    padding-block: 0;
+    padding-right: var(--container-pad);
   }
 
    .intro__image-clip {
@@ -540,14 +557,14 @@ p {
    ========================= */
 
 .contact {
-  padding-block: var(--space-64);
+  padding-block: var(--space-xl);
 }
 
 /* Layout: 1 col mobile, 2 col ab md */
 .contact__layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-48);
+  gap: var(--space-lg);
   align-items: center;
 }
 
@@ -570,7 +587,7 @@ p {
 }
 
 .contact__content h2 {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2xs);
 }
 
 /* Links (Tel/Mail) */
@@ -584,8 +601,8 @@ text-decoration-color:var(--color-primary);
 .contact__actions {
   display: flex;
   flex-direction: column;
-  gap: var(--space-16);
-  margin-top: var(--space-40);
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
   align-items: flex-start; /* Buttons NICHT full width */
 }
 
@@ -612,12 +629,14 @@ text-decoration-color:var(--color-primary);
   overflow: hidden;
 
   height: 100%;
-  min-height: clamp(320px, 35vw, 520px);
 
   width: calc(100% + var(--bleed));
   margin-right: calc(var(--bleed) * -1);
 
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 15% 100%);
+
+  aspect-ratio: 2 / 1;
+  min-height: clamp(260px, 22vw, 420px);
 }
 
 .contact__image {
@@ -632,7 +651,7 @@ text-decoration-color:var(--color-primary);
 
 .absatz {
   margin: 0;
-  margin-top: var(--space-16);
+  margin-top: var(--space-sm);
 }
 
 /* Overlay: startet unsichtbar, blendet ein */
@@ -649,15 +668,15 @@ text-decoration-color:var(--color-primary);
 /* Mobile */
 @media (max-width: 767.98px) {
   .contact {
-    padding-block: var(--space-64);
+    padding-block: var(--space-xl);
   }
 
   .contact__layout {
-    gap: var(--space-32);
+    gap: var(--space-md);
   }
 
   .contact__media {
-    margin-top: var(--space-24);
+    margin-top: var(--space-md);
     padding-block: 0;
     padding-left: var(--container-pad);
   }
@@ -674,7 +693,7 @@ text-decoration-color:var(--color-primary);
    ========================= */
 
 .site-footer {
-  padding-block: var(--space-48);
+  padding-block: var(--space-lg);
 }
 
 /* Außenlayout */
@@ -684,7 +703,7 @@ text-decoration-color:var(--color-primary);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: var(--space-48);
+  gap: var(--space-lg);
 
   flex-wrap: wrap; /* wichtig: erlaubt Umbruch */
 }
@@ -707,7 +726,7 @@ text-decoration-color:var(--color-primary);
 .footer__legal {
   flex: 0 1 220px;
   display: grid;
-  gap: var(--space-8);
+  gap: var(--space-xs);
   text-align: right;
   margin-left: auto; /* schiebt rechts */
 }
@@ -726,7 +745,7 @@ text-decoration-color:var(--color-primary);
     align-items: center;        /* alle Spalten mittig */
     justify-content: flex-start;/* space-between deaktivieren */
     text-align: center;         /* Text im Footer generell zentrieren */
-    gap: var(--space-24);
+    gap: var(--space-md);
   }
 
   .footer__contact {
@@ -742,7 +761,7 @@ text-decoration-color:var(--color-primary);
     align-items: center;
     text-align: center;
 
-    padding-top: var(--space-24);
+    padding-top: var(--space-md);
     border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
 }
